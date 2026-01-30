@@ -23,9 +23,14 @@ env:
 
 
 jobs:
+
   integration:
-    uses: shikha24-coder/github-actions-for-ci-cd-4375061/blob/main/.github/workflows/python-app.yml
+         uses: ./.github/workflows/python-ci-workflow.yml
+         permissions:
+           contents: read
+           checks: write
   build:
+      needs: [integration]
 
     runs-on: ubuntu-latest
     permissions:
